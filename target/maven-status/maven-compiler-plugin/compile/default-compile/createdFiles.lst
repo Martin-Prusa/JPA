@@ -1,0 +1,4 @@
+cz/martin/beans/NewProductBean.class
+cz/martin/repositories/ProductsRepository.class
+cz/martin/services/ProductsService.class
+cz/martin/entities/ProductEntity.class
