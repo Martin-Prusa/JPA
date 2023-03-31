@@ -30,4 +30,8 @@ public class ProductsService {
     public List<ProductEntity> getProducts() {
         return productsRepository.getProducts();
     }
+
+    public ProductEntity getProductById(int id) {
+        return productsRepository.getProductById(id);
+    }
 }

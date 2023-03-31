@@ -69,6 +69,18 @@ public class ProductsRepository {
         em.close();
     }
 
+    public ProductEntity getProductById(int id) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<ProductEntity> query = em.createQuery("SELECT product FROM ProductEntity AS product WHERE product.id = :id", ProductEntity.class);
+        query.setParameter("id", id);
+
+        ProductEntity result = query.getSingleResult();
+
+        em.close();
+
+        return result;
+    }
+
     @PreDestroy
     public void onDestroy() {
         emf.close();
