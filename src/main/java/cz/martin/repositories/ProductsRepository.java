@@ -50,6 +50,25 @@ public class ProductsRepository {
         em.close();
     }
 
+    public void update(ProductEntity productEntity) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<ProductEntity> query = em.createQuery("SELECT product FROM ProductEntity AS product WHERE product.id = :id", ProductEntity.class);
+        query.setParameter("id", productEntity.getId());
+
+        ProductEntity result = query.getSingleResult();
+
+        EntityTransaction et = em.getTransaction();
+
+        et.begin();
+
+        result.setTitle(productEntity.getTitle());
+        result.setPrice(productEntity.getPrice());
+
+        em.persist(result);
+        et.commit();
+        em.close();
+    }
+
     @PreDestroy
     public void onDestroy() {
         emf.close();

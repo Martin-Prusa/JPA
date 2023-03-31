@@ -23,6 +23,10 @@ public class ProductsService {
         productsRepository.deleteProduct(id);
     }
 
+    public void update(ProductEntity productEntity) {
+        productsRepository.update(productEntity);
+    }
+
     public List<ProductEntity> getProducts() {
         return productsRepository.getProducts();
     }

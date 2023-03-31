@@ -10,7 +10,14 @@
         <h:link value="Create" outcome="create.xhtml" />
         <ul>
             <ui:repeat value="#{productsService.products}" var="p">
-                <li>#{p.title} - #{p.price} <h:form><h:commandButton value="X" action="#{productsService.deleteProduct(p.id)}" /></h:form></li>
+                <li>#{p.title} - #{p.price}
+                    <h:form>
+                        <h:commandButton value="X" action="#{productsService.deleteProduct(p.id)}" />
+                        <h:link value="Edit" outcome="update.xhtml">
+                            <f:param name="id" value="#{p.id}" />
+                        </h:link>
+                    </h:form>
+                </li>
             </ui:repeat>
         </ul>
     </ui:define>
